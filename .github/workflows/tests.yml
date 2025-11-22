@@ -1,5 +1,9 @@
 name: Tests
 
+permissions:
+    contents: read
+    id-token: write
+
 on:
   push:
     branches: [ main ]
@@ -19,4 +23,13 @@ jobs:
       run: swift --version
 
     - name: Run tests
-      run: swift test
+      run: swift test --enable-code-coverage
+
+    - name: Export coverage report to lcov format
+      run: xcrun llvm-cov export -format="lcov" .build/debug/SimpleCalcPackageTests.xctest/Contents/MacOS/SimpleCalcPackageTests -instr-profile=.build/debug/codecov/default.profdata > coverage.lcov
+
+    - name: Upload coverage report
+      uses: qltysh/qlty-action/coverage@v2
+      with:
+        oidc: true
+        file: coverage.lcov
