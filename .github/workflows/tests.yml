@@ -5,10 +5,13 @@ permissions:
     id-token: write
 
 on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
 
 jobs:
   test:
