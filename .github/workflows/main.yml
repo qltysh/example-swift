@@ -32,5 +32,5 @@ jobs:
       uses: qltysh/qlty-action/coverage@ea1eaf434a27bf50cd544153084fbb11c52aaf84
       with:
         oidc: true
-        format: xccov
+        format: xccov-json
         files: xccov-coverage.json
