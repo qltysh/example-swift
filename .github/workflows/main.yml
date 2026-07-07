@@ -29,7 +29,7 @@ jobs:
       run: xcrun xccov view --archive --json TestResults.xcresult > xccov-coverage.json
 
     - name: Upload coverage report
-      uses: qltysh/qlty-action/coverage@ea1eaf434a27bf50cd544153084fbb11c52aaf84
+      uses: qltysh/qlty-action/coverage@b413a89d8f3a8b36b9edd20b7ef1ad7ae0a7ac3a # version 2.2.2
       with:
         oidc: true
         format: xccov-json
